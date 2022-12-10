@@ -16,7 +16,6 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel> {
     }
     
     private let schoolNameTextField = UITextField().then {
-        $0.layer.borderColor = UIColor.black.cgColor
         $0.layer.borderWidth = 1.0
         $0.addLeftPadding()
         $0.placeholder = "학교 이름을 입력해 주세요."
@@ -28,6 +27,10 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel> {
         $0.titleLabel?.font = .systemFont(ofSize: 15, weight: .bold)
         $0.layer.borderColor = UIColor.black.cgColor
         $0.layer.borderWidth = 1.0
+    }
+    
+    override func configureVC() {
+        schoolNameTextField.delegate = self
     }
     
     override func addView() {
@@ -59,5 +62,15 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel> {
             $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().offset(35)
         }
+    }
+}
+
+
+extension SchoolNameViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.becomeFirstResponder()
+        
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.red.cgColor
     }
 }
