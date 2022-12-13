@@ -19,14 +19,7 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel> {
         $0.layer.borderWidth = 1.0
         $0.addLeftPadding()
         $0.placeholder = "학교 이름을 입력해 주세요."
-    }
-    
-    private lazy var nextButton = UIButton().then {
-        $0.setTitle("검색", for: .normal)
-        $0.setTitleColor(.black, for: .normal)
-        $0.titleLabel?.font = .systemFont(ofSize: 15, weight: .bold)
-        $0.layer.borderColor = UIColor.black.cgColor
-        $0.layer.borderWidth = 1.0
+        $0.returnKeyType = .done
     }
     
     override func configureVC() {
@@ -34,7 +27,7 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel> {
     }
     
     override func addView() {
-        view.addSubViews( mainTitleLabel, mainLottieAnimationView, schoolNameTextField, nextButton)
+        view.addSubViews( mainTitleLabel, mainLottieAnimationView, schoolNameTextField)
     }
     
     override func setLayout() {
@@ -55,13 +48,6 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel> {
             $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().offset(35)
         }
-        
-        nextButton.snp.makeConstraints {
-            $0.height.equalTo(50)
-            $0.bottom.equalToSuperview().inset(60)
-            $0.centerX.equalToSuperview()
-            $0.leading.equalToSuperview().offset(35)
-        }
     }
 }
 
@@ -72,5 +58,9 @@ extension SchoolNameViewController: UITextFieldDelegate {
         
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.red.cgColor
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            return textField.resignFirstResponder()
     }
 }

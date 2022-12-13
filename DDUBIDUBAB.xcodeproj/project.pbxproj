@@ -335,6 +335,7 @@
 				0579887B2942D13F0006A94E /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0579887E2942D15E0006A94E /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				057988812942D3300006A94E /* XCRemoteSwiftPackageReference "Then" */,
+				0587951A2948C0A20018C5EC /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = 057988652942C0E70006A94E /* Products */;
 			projectDirPath = "";
@@ -610,6 +611,14 @@
 			requirement = {
 				branch = master;
 				kind = branch;
+			};
+		};
+		0587951A2948C0A20018C5EC /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
