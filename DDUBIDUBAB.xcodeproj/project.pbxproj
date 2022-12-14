@@ -27,6 +27,8 @@
 		057988AB294312910006A94E /* dancing-monkey.json in Resources */ = {isa = PBXBuildFile; fileRef = 057988AA294312910006A94E /* dancing-monkey.json */; };
 		057988B0294315200006A94E /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057988AF294315200006A94E /* UIViewExt.swift */; };
 		057988B32943156F0006A94E /* UITextFieldExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057988B22943156F0006A94E /* UITextFieldExt.swift */; };
+		0587951D2948C7D40018C5EC /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0587951C2948C7D40018C5EC /* Moya */; };
+		058795202948D2280018C5EC /* SchoolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0587951F2948D2280018C5EC /* SchoolModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,7 @@
 		057988AA294312910006A94E /* dancing-monkey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "dancing-monkey.json"; path = "../../../../../Downloads/dancing-monkey.json"; sourceTree = "<group>"; };
 		057988AF294315200006A94E /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		057988B22943156F0006A94E /* UITextFieldExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExt.swift; sourceTree = "<group>"; };
+		0587951F2948D2280018C5EC /* SchoolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 			files = (
 				0579887D2942D13F0006A94E /* SnapKit in Frameworks */,
 				057988832942D3300006A94E /* Then in Frameworks */,
+				0587951D2948C7D40018C5EC /* Moya in Frameworks */,
 				057988802942D15E0006A94E /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,6 +165,7 @@
 		0579888B2942D3CC0006A94E /* SchooleName */ = {
 			isa = PBXGroup;
 			children = (
+				0587951E2948D1C80018C5EC /* Models */,
 				057988A42942E2420006A94E /* VM */,
 				057988A32942E23E0006A94E /* VC */,
 			);
@@ -282,6 +287,14 @@
 			path = UITextField;
 			sourceTree = "<group>";
 		};
+		0587951E2948D1C80018C5EC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0587951F2948D2280018C5EC /* SchoolModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -302,6 +315,7 @@
 				0579887C2942D13F0006A94E /* SnapKit */,
 				0579887F2942D15E0006A94E /* Lottie */,
 				057988822942D3300006A94E /* Then */,
+				0587951C2948C7D40018C5EC /* Moya */,
 			);
 			productName = DDUBIDUBAB;
 			productReference = 057988642942C0E70006A94E /* DDUBIDUBAB.app */;
@@ -335,7 +349,7 @@
 				0579887B2942D13F0006A94E /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0579887E2942D15E0006A94E /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				057988812942D3300006A94E /* XCRemoteSwiftPackageReference "Then" */,
-				0587951A2948C0A20018C5EC /* XCRemoteSwiftPackageReference "Moya" */,
+				0587951B2948C7D40018C5EC /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = 057988652942C0E70006A94E /* Products */;
 			projectDirPath = "";
@@ -369,6 +383,7 @@
 				057988942942DBF60006A94E /* Coordinator.swift in Sources */,
 				057988962942DC400006A94E /* BabStep.swift in Sources */,
 				057988A22942E2300006A94E /* MenuViewModel.swift in Sources */,
+				058795202948D2280018C5EC /* SchoolModel.swift in Sources */,
 				057988B32943156F0006A94E /* UITextFieldExt.swift in Sources */,
 				0579886A2942C0E70006A94E /* SceneDelegate.swift in Sources */,
 				057988A82942E2600006A94E /* SchoolNameViewModel.swift in Sources */,
@@ -613,12 +628,12 @@
 				kind = branch;
 			};
 		};
-		0587951A2948C0A20018C5EC /* XCRemoteSwiftPackageReference "Moya" */ = {
+		0587951B2948C7D40018C5EC /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -638,6 +653,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 057988812942D3300006A94E /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		0587951C2948C7D40018C5EC /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0587951B2948C7D40018C5EC /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
