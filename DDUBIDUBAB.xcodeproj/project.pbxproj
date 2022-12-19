@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		050CA6F3294B79A200A886F0 /* SchoolNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050CA6F2294B79A200A886F0 /* SchoolNameTableViewCell.swift */; };
+		050CA6F5294B7B3A00A886F0 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050CA6F4294B7B3A00A886F0 /* BaseTableViewCell.swift */; };
 		057988682942C0E70006A94E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057988672942C0E70006A94E /* AppDelegate.swift */; };
 		0579886A2942C0E70006A94E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057988692942C0E70006A94E /* SceneDelegate.swift */; };
 		057988712942C0E80006A94E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 057988702942C0E80006A94E /* Assets.xcassets */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		050CA6F2294B79A200A886F0 /* SchoolNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolNameTableViewCell.swift; sourceTree = "<group>"; };
+		050CA6F4294B7B3A00A886F0 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		057988642942C0E70006A94E /* DDUBIDUBAB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDUBIDUBAB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		057988672942C0E70006A94E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		057988692942C0E70006A94E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +73,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		050CA6F0294B798B00A886F0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				050CA6F1294B798F00A886F0 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		050CA6F1294B798F00A886F0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				050CA6F2294B79A200A886F0 /* SchoolNameTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		0579885B2942C0E70006A94E = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +160,7 @@
 				057988912942DBCA0006A94E /* BaseCoordinator.swift */,
 				057988972942DDDB0006A94E /* BaseVC.swift */,
 				057988992942DE000006A94E /* BaseViewModel.swift */,
+				050CA6F4294B7B3A00A886F0 /* BaseTableViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -232,6 +253,7 @@
 		057988A32942E23E0006A94E /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				050CA6F0294B798B00A886F0 /* View */,
 				057988A52942E24E0006A94E /* SchoolNameViewController.swift */,
 			);
 			path = VC;
@@ -382,6 +404,7 @@
 				057988682942C0E70006A94E /* AppDelegate.swift in Sources */,
 				057988942942DBF60006A94E /* Coordinator.swift in Sources */,
 				057988962942DC400006A94E /* BabStep.swift in Sources */,
+				050CA6F3294B79A200A886F0 /* SchoolNameTableViewCell.swift in Sources */,
 				057988A22942E2300006A94E /* MenuViewModel.swift in Sources */,
 				058795202948D2280018C5EC /* SchoolModel.swift in Sources */,
 				057988B32943156F0006A94E /* UITextFieldExt.swift in Sources */,
@@ -389,6 +412,7 @@
 				057988A82942E2600006A94E /* SchoolNameViewModel.swift in Sources */,
 				057988A62942E24E0006A94E /* SchoolNameViewController.swift in Sources */,
 				057988A02942E2240006A94E /* MenuViewController.swift in Sources */,
+				050CA6F5294B7B3A00A886F0 /* BaseTableViewCell.swift in Sources */,
 				0579889A2942DE000006A94E /* BaseViewModel.swift in Sources */,
 				057988982942DDDB0006A94E /* BaseVC.swift in Sources */,
 				0579889C2942DF4F0006A94E /* MainCoordinator.swift in Sources */,
