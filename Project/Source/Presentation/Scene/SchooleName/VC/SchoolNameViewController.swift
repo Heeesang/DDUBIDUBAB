@@ -1,6 +1,4 @@
 import UIKit
-import Then
-import SnapKit
 import Lottie
 
 class SchoolNameViewController: BaseVC<SchoolNameViewModel> {
@@ -30,8 +28,6 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel> {
     }
     
     override func configureVC() {
-        schoolNameTableView.delegate = self
-        schoolNameTableView.dataSource = self
         schoolNameTextField.delegate = self
     }
     
@@ -75,19 +71,5 @@ extension SchoolNameViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
-    }
-}
-
-extension SchoolNameViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = schoolNameTableView.dequeueReusableCell(withIdentifier: SchoolNameTableViewCell.cellId, for: indexPath) as! SchoolNameTableViewCell
-        
-        cell.textLabel?.text = "dasd"
-        
-        return cell
     }
 }
