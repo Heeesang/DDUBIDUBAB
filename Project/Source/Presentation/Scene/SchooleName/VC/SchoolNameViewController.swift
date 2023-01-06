@@ -1,5 +1,7 @@
 import UIKit
 import Lottie
+import RxSwift
+import RxCocoa
 
 class SchoolNameViewController: BaseVC<SchoolNameViewModel> {
     
@@ -25,6 +27,10 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel> {
         $0.rowHeight = 100
         $0.register(SchoolNameTableViewCell.self, forCellReuseIdentifier: SchoolNameTableViewCell.cellId)
         $0.backgroundColor = .red
+    }
+    
+    private func bindTableView() {
+        
     }
     
     override func configureVC() {

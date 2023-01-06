@@ -31,6 +31,8 @@
 		057988B32943156F0006A94E /* UITextFieldExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057988B22943156F0006A94E /* UITextFieldExt.swift */; };
 		0587951D2948C7D40018C5EC /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0587951C2948C7D40018C5EC /* Moya */; };
 		058795202948D2280018C5EC /* SchoolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0587951F2948D2280018C5EC /* SchoolModel.swift */; };
+		05E269B329680A3C008E11A2 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 05E269B229680A3C008E11A2 /* RxCocoa */; };
+		05E269B629680FDE008E11A2 /* SchoolNameAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E269B529680FDE008E11A2 /* SchoolNameAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,7 @@
 		057988AF294315200006A94E /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		057988B22943156F0006A94E /* UITextFieldExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExt.swift; sourceTree = "<group>"; };
 		0587951F2948D2280018C5EC /* SchoolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolModel.swift; sourceTree = "<group>"; };
+		05E269B529680FDE008E11A2 /* SchoolNameAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolNameAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,7 @@
 			files = (
 				0579887D2942D13F0006A94E /* SnapKit in Frameworks */,
 				057988832942D3300006A94E /* Then in Frameworks */,
+				05E269B329680A3C008E11A2 /* RxCocoa in Frameworks */,
 				0587951D2948C7D40018C5EC /* Moya in Frameworks */,
 				057988802942D15E0006A94E /* Lottie in Frameworks */,
 			);
@@ -196,6 +200,7 @@
 		0579888C2942D4590006A94E /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				05E269B529680FDE008E11A2 /* SchoolNameAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -338,6 +343,7 @@
 				0579887F2942D15E0006A94E /* Lottie */,
 				057988822942D3300006A94E /* Then */,
 				0587951C2948C7D40018C5EC /* Moya */,
+				05E269B229680A3C008E11A2 /* RxCocoa */,
 			);
 			productName = DDUBIDUBAB;
 			productReference = 057988642942C0E70006A94E /* DDUBIDUBAB.app */;
@@ -372,6 +378,7 @@
 				0579887E2942D15E0006A94E /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				057988812942D3300006A94E /* XCRemoteSwiftPackageReference "Then" */,
 				0587951B2948C7D40018C5EC /* XCRemoteSwiftPackageReference "Moya" */,
+				05E269B129680A3C008E11A2 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 057988652942C0E70006A94E /* Products */;
 			projectDirPath = "";
@@ -407,6 +414,7 @@
 				050CA6F3294B79A200A886F0 /* SchoolNameTableViewCell.swift in Sources */,
 				057988A22942E2300006A94E /* MenuViewModel.swift in Sources */,
 				058795202948D2280018C5EC /* SchoolModel.swift in Sources */,
+				05E269B629680FDE008E11A2 /* SchoolNameAPI.swift in Sources */,
 				057988B32943156F0006A94E /* UITextFieldExt.swift in Sources */,
 				0579886A2942C0E70006A94E /* SceneDelegate.swift in Sources */,
 				057988A82942E2600006A94E /* SchoolNameViewModel.swift in Sources */,
@@ -660,6 +668,14 @@
 				kind = branch;
 			};
 		};
+		05E269B129680A3C008E11A2 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -682,6 +698,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0587951B2948C7D40018C5EC /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
+		};
+		05E269B229680A3C008E11A2 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05E269B129680A3C008E11A2 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
