@@ -2,7 +2,7 @@ import Moya
 import Foundation
 
 public enum SchoolNameAPI {
-    case schools(name: String, apiKey: String)
+    case schools(schoolName: String, apiKey: String)
 }
 
 extension SchoolNameAPI: TargetType {
