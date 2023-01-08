@@ -5,7 +5,7 @@ struct schoolResponse: Codable {
     let schools: [schoolsInfo]
     
     private enum CodingKeys: String, CodingKey {
-        case schools
+        case schools = "schoolInfo"
     }
 }
 

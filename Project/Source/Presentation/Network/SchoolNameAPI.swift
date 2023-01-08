@@ -30,11 +30,12 @@ extension SchoolNameAPI: TargetType {
     
     public var task: Moya.Task {
         switch self {
-        case .schools(let name, apiKey: let apiKey):
-            return .requestParameters(parameters: ["SCHUL_NM": name, "Key": apiKey], encoding: URLEncoding.default)        }
+        case .schools(let name, let apiKey):
+            return .requestParameters(parameters: ["KEY": apiKey, "SCHUL_NM": name], encoding:
+                                        URLEncoding.queryString)        }
     }
     
     public var headers: [String : String]? {
-        return nil
+        return ["Content-type": "application/json"]
     }
 }

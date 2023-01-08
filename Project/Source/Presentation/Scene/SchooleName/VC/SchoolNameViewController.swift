@@ -30,11 +30,13 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel> {
     }
     
     private func bindTableView() {
-        
+        viewModel.fetchSchoolName(schoolName: "비아")
     }
     
     override func configureVC() {
         schoolNameTextField.delegate = self
+        
+        bindTableView()
     }
     
     override func addView() {

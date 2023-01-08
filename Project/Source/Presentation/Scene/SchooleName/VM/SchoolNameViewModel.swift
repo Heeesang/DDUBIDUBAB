@@ -24,9 +24,11 @@ class SchoolNameViewModel: BaseViewModel {
                     print(decoded.schools)
                 } catch {
                     print(error.localizedDescription)
+                    print("2")
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                print("1")
             }
         }
     }
