@@ -31,7 +31,7 @@ extension SchoolNameAPI: TargetType {
     public var task: Moya.Task {
         switch self {
         case .schools(let name, let apiKey):
-            return .requestParameters(parameters: ["KEY": apiKey, "SCHUL_NM": name], encoding:
+            return .requestParameters(parameters: ["KEY": apiKey, "SCHUL_NM": name, "type": "JSON"], encoding:
                                         URLEncoding.queryString)        }
     }
     
