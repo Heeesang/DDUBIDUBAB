@@ -37,13 +37,16 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
             
             cell.changeCellData(with: data.row!)
         }.disposed(by: disposeBag)
-        
+    }
+    
+    private func fetchSchoolData() {
         viewModel.fetchSchoolName(schoolName: "비아")
     }
     
     override func configureVC() {
         schoolNameTextField.delegate = self
         
+        fetchSchoolData()
         bindTableView()
     }
     
