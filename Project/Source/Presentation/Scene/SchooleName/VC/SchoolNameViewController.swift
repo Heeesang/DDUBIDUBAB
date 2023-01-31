@@ -6,7 +6,7 @@ import RxCocoa
 class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol {
     private let disposeBag = DisposeBag()
     
-    var schoolData = PublishSubject<[SchoolInfo]>()
+    var schoolData = PublishSubject<[Row]>()
     
     private let mainLottieAnimationView = LottieAnimationView(name: "dancing-monkey").then {
         $0.contentMode = .scaleAspectFit
@@ -27,15 +27,14 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
     }
     
     private let schoolNameTableView = UITableView().then {
-        $0.rowHeight = 100
         $0.register(SchoolNameTableViewCell.self, forCellReuseIdentifier: SchoolNameTableViewCell.cellId)
-        $0.backgroundColor = .red
+        $0.backgroundColor = .blue
     }
     
     private func bindTableView() {
         schoolData.bind(to: schoolNameTableView.rx.items(cellIdentifier: SchoolNameTableViewCell.cellId, cellType: SchoolNameTableViewCell.self)) { (row, data, cell) in
             
-            cell.changeCellData(with: data.row!)
+            cell.changeCellData(with: [data])
         }.disposed(by: disposeBag)
     }
     
@@ -75,7 +74,8 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
         
         schoolNameTableView.snp.makeConstraints {
             $0.top.equalTo(schoolNameTextField.snp.bottom).offset(30)
-            $0.width.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(9)
+            $0.bottom.equalToSuperview()
         }
     }
 }

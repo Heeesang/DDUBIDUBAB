@@ -4,7 +4,7 @@ import RxSwift
 import RxCocoa
 
 protocol SchoolInfoProtocol: AnyObject {
-    var schoolData: PublishSubject<[SchoolInfo]> { get set }
+    var schoolData: PublishSubject<[Row]> { get set }
 }
 
 class SchoolNameViewModel: BaseViewModel {
@@ -19,8 +19,8 @@ class SchoolNameViewModel: BaseViewModel {
             case .success(let response):
                 let responseData = response.data
                 do {
-                    let decoded = try JSONDecoder().decode(Welcome.self, from: responseData).schoolInfo
-                    self.delegate?.schoolData.onNext(decoded)
+                    let decoded = try JSONDecoder().decode(SchoolInfo.self, from: responseData)
+                    self.delegate?.schoolData.onNext(decoded.row ?? .init())
                     print(decoded)
                 } catch let DecodingError.dataCorrupted(context) {
                     print(context)

@@ -1,6 +1,6 @@
 import UIKit
 
-class SchoolNameTableViewCell: BaseTableViewCell<Welcome> {
+class SchoolNameTableViewCell: UITableViewCell{
     
     static let cellId = "SchoolNameTableViewCell"
     
@@ -14,11 +14,32 @@ class SchoolNameTableViewCell: BaseTableViewCell<Welcome> {
         $0.font = .systemFont(ofSize: 12, weight: .medium)
     }
     
-    override func addSubview(_ view: UIView) {
-        self.addSubViews(schoolNameLabel, schoolAddressLabel)
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        contentView.layer.cornerRadius = 10
+        contentView.backgroundColor = .red
+        self.selectionStyle = .none
+        
+        addView()
+        setLayout()
     }
     
-    override func setLayout() {
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0))
+    }
+    
+    private func addView() {
+        contentView.addSubViews(schoolNameLabel, schoolAddressLabel)
+    }
+    
+    private func setLayout() {
         schoolNameLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(30)
