@@ -20,7 +20,7 @@ class SchoolNameViewModel: BaseViewModel {
                 let responseData = response.data
                 do {
                     let decoded = try JSONDecoder().decode(Welcome.self, from: responseData).schoolInfo
-//                    self.delegate?.schoolData.onNext(decoded)
+                    self.delegate?.schoolData.onNext(decoded)
                     print(decoded)
                 } catch let DecodingError.dataCorrupted(context) {
                     print(context)

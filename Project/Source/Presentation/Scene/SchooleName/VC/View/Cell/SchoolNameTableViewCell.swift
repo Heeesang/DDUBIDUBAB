@@ -31,13 +31,10 @@ class SchoolNameTableViewCell: BaseTableViewCell<Welcome> {
         }
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        self.reuse()
-    }
-    
-    func reuse(title: String) {
-        schoolNameLabel.text = title
+    func changeCellData(with model: [Row]) {
+        DispatchQueue.main.async {
+            self.schoolNameLabel.text = model[0].schulNm
+            self.schoolAddressLabel.text = model[0].orgRdnma
+        }
     }
 }

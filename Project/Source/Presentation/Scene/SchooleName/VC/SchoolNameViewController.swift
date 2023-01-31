@@ -3,7 +3,10 @@ import Lottie
 import RxSwift
 import RxCocoa
 
-class SchoolNameViewController: BaseVC<SchoolNameViewModel> {
+class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol {
+    private let disposeBag = DisposeBag()
+    
+    var schoolData = PublishSubject<[SchoolInfo]>()
     
     private let mainLottieAnimationView = LottieAnimationView(name: "dancing-monkey").then {
         $0.contentMode = .scaleAspectFit
@@ -30,6 +33,11 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel> {
     }
     
     private func bindTableView() {
+        schoolData.bind(to: schoolNameTableView.rx.items(cellIdentifier: SchoolNameTableViewCell.cellId, cellType: SchoolNameTableViewCell.self)) { (row, data, cell) in
+            
+            cell.changeCellData(with: data.row!)
+        }.disposed(by: disposeBag)
+        
         viewModel.fetchSchoolName(schoolName: "비아")
     }
     
