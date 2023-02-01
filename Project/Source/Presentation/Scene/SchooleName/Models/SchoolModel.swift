@@ -7,18 +7,7 @@ struct Welcome: Codable {
 
 // MARK: - SchoolInfo
 struct SchoolInfo: Codable {
-    let head: [Head]?
     let row: [Row]?
-}
-
-struct Head: Codable {
-    let listTotalCount: Int?
-    let result: Result?
-
-    enum CodingKeys: String, CodingKey {
-        case listTotalCount = "list_total_count"
-        case result = "RESULT"
-    }
 }
 
 // MARK: - Result
