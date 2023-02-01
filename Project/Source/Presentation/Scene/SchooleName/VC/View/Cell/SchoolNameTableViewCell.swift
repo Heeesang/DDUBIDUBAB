@@ -54,8 +54,8 @@ class SchoolNameTableViewCell: UITableViewCell{
     
     func changeCellData(with model: [Row]) {
         DispatchQueue.main.async {
-            self.schoolNameLabel.text = model[0].schulNm
-            self.schoolAddressLabel.text = model[0].orgRdnma
+            self.schoolNameLabel.text = model[3].schulNm
+            self.schoolAddressLabel.text = model[3].orgRdnma
         }
     }
 }
