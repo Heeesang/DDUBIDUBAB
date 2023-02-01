@@ -1,8 +1,32 @@
-//
-//  MenuViewController.swift
-//  DDUBIDUBAB
-//
-//  Created by 곽희상 on 2022/12/09.
-//
+import UIKit
+import RxSwift
+import RxCocoa
 
-import Foundation
+class MenuViewController: BaseVC<MenuViewModel> {
+    private let titleLabel = UILabel().then {
+        $0.text = "밥"
+        $0.font = .systemFont(ofSize: 24, weight: .bold)
+    }
+    
+    private let menuContainerView = UIView().then {
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    override func addView() {
+        view.addSubViews(titleLabel, menuContainerView)
+    }
+    
+    override func setLayout() {
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(25)
+            $0.centerX.equalToSuperview()
+        }
+        
+        menuContainerView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(15)
+            $0.bottom.equalToSuperview().inset(100)
+            $0.leading.trailing.equalToSuperview().inset(25)
+        }
+    }
+}

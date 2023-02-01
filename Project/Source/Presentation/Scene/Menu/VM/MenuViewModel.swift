@@ -1,8 +1,8 @@
-//
-//  MenuViewModel.swift
-//  DDUBIDUBAB
-//
-//  Created by 곽희상 on 2022/12/09.
-//
+import UIKit
+import Moya
+import RxSwift
+import RxCocoa
 
-import Foundation
+class MenuViewModel: BaseViewModel {
+    
+}
