@@ -19,13 +19,13 @@ class MenuViewController: BaseVC<MenuViewModel> {
     
     override func setLayout() {
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(25)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.centerX.equalToSuperview()
         }
         
         menuContainerView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(15)
-            $0.bottom.equalToSuperview().inset(100)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(25)
+            $0.bottom.equalToSuperview().inset(230)
             $0.leading.trailing.equalToSuperview().inset(25)
         }
     }
