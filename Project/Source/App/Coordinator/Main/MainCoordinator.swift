@@ -3,8 +3,8 @@ import UIKit
 final class MainCoordinator: BaseCoordinator {
     
     override func start() {
-        let vm = MenuViewModel(coordinator: self)
-        let vc = MenuViewController(viewModel: vm)
+        let vm = SchoolNameViewModel(coordinator: self)
+        let vc = SchoolNameViewController(viewModel: vm)
         
         navigationController.pushViewController(vc, animated: true)
     }

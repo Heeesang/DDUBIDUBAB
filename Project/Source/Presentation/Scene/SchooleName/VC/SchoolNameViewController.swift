@@ -31,11 +31,35 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
         $0.backgroundColor = .blue
     }
     
+    private lazy var enterButton = UIButton().then {
+        $0.backgroundColor = .red
+    }
+    
+    private func enterButtonDidTap() {
+        enterButton.rx.tap
+            .bind(onNext: {
+                self.fetchSchoolData()
+            })
+    }
     private func bindTableView() {
-        schoolData.bind(to: schoolNameTableView.rx.items(cellIdentifier: SchoolNameTableViewCell.cellId, cellType: SchoolNameTableViewCell.self)) { (row, data, cell) in
+//        schoolData.bind(to: schoolNameTableView.rx.items(cellIdentifier: SchoolNameTableViewCell.cellId, cellType: SchoolNameTableViewCell.self)) { (row, data, cell) in
+//
+//            cell.changeCellData(with: data.row ?? .init())
+//        }.disposed(by: disposeBag)
+        
+        let cities = ["London", "Vienna"]
+        
+        let citiesOb: Observable<[String]> = Observable.of(cities)
+        
+        citiesOb.bind(to: schoolNameTableView.rx.items) { (tableView: UITableView, index: Int, element: String) -> SchoolNameTableViewCell in
             
-            cell.changeCellData(with: data.row ?? .init())
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SchoolNameTableViewCell.cellId) else { return SchoolNameTableViewCell() }
+            
+            
+            return cell as! SchoolNameTableViewCell
+            
         }.disposed(by: disposeBag)
+        
     }
     
     private func fetchSchoolData() {
@@ -47,10 +71,12 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
         
         fetchSchoolData()
         bindTableView()
+        enterButtonDidTap()
+        print(schoolData)
     }
     
     override func addView() {
-        view.addSubViews( mainTitleLabel, mainLottieAnimationView, schoolNameTextField, schoolNameTableView)
+        view.addSubViews( mainTitleLabel, mainLottieAnimationView, schoolNameTextField, schoolNameTableView, enterButton)
     }
     
     override func setLayout() {
@@ -62,6 +88,11 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
         
         mainTitleLabel.snp.makeConstraints {
             $0.top.equalTo(mainLottieAnimationView.snp.bottom)
+            $0.centerX.equalToSuperview()
+        }
+        
+        enterButton.snp.makeConstraints {
+            $0.top.equalTo(mainTitleLabel.snp.bottom).offset(20)
             $0.centerX.equalToSuperview()
         }
         
