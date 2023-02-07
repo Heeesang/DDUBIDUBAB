@@ -42,24 +42,25 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
             })
     }
     private func bindTableView() {
-//        schoolData.bind(to: schoolNameTableView.rx.items(cellIdentifier: SchoolNameTableViewCell.cellId, cellType: SchoolNameTableViewCell.self)) { (row, data, cell) in
-//
-//            cell.changeCellData(with: data.row ?? .init())
-//        }.disposed(by: disposeBag)
-        
-        let cities = ["London", "Vienna"]
-        
-        let citiesOb: Observable<[String]> = Observable.of(cities)
-        
-        citiesOb.bind(to: schoolNameTableView.rx.items) { (tableView: UITableView, index: Int, element: String) -> SchoolNameTableViewCell in
-            
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: SchoolNameTableViewCell.cellId) else { return SchoolNameTableViewCell() }
-            
-            
-            return cell as! SchoolNameTableViewCell
-            
+        print("1")
+        schoolData.bind(to: schoolNameTableView.rx.items(cellIdentifier: SchoolNameTableViewCell.cellId, cellType: SchoolNameTableViewCell.self)) { (row, data, cell) in
+            print("2")
+            cell.changeCellData(with: data.row ?? .init())
         }.disposed(by: disposeBag)
         
+//        let cities = ["London", "Vienna"]
+//
+//        let citiesOb: Observable<[String]> = Observable.of(cities)
+//
+//        schoolData.bind(to: schoolNameTableView.rx.items) { (tableView: UITableView, index: Int, element: String) -> SchoolNameTableViewCell in
+//
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: SchoolNameTableViewCell.cellId) else { return SchoolNameTableViewCell() }
+//
+//
+//            return cell as! SchoolNameTableViewCell
+//
+//        }.disposed(by: disposeBag)
+//
     }
     
     private func fetchSchoolData() {
@@ -72,7 +73,6 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
         fetchSchoolData()
         bindTableView()
         enterButtonDidTap()
-        print(schoolData)
     }
     
     override func addView() {
