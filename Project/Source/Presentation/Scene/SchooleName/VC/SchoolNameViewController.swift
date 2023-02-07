@@ -6,7 +6,7 @@ import RxCocoa
 class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol {
     private let disposeBag = DisposeBag()
     
-    var schoolData = PublishSubject<[SchoolInfo]>()
+    var schoolData = PublishSubject<[String]>()
     
     private let mainLottieAnimationView = LottieAnimationView(name: "dancing-monkey").then {
         $0.contentMode = .scaleAspectFit
@@ -42,25 +42,10 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
             })
     }
     private func bindTableView() {
-        print("1")
+        fetchSchoolData()
         schoolData.bind(to: schoolNameTableView.rx.items(cellIdentifier: SchoolNameTableViewCell.cellId, cellType: SchoolNameTableViewCell.self)) { (row, data, cell) in
             print("2")
-            cell.changeCellData(with: data.row ?? .init())
         }.disposed(by: disposeBag)
-        
-//        let cities = ["London", "Vienna"]
-//
-//        let citiesOb: Observable<[String]> = Observable.of(cities)
-//
-//        schoolData.bind(to: schoolNameTableView.rx.items) { (tableView: UITableView, index: Int, element: String) -> SchoolNameTableViewCell in
-//
-//            guard let cell = tableView.dequeueReusableCell(withIdentifier: SchoolNameTableViewCell.cellId) else { return SchoolNameTableViewCell() }
-//
-//
-//            return cell as! SchoolNameTableViewCell
-//
-//        }.disposed(by: disposeBag)
-//
     }
     
     private func fetchSchoolData() {
@@ -70,7 +55,6 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
     override func configureVC() {
         schoolNameTextField.delegate = self
         
-        fetchSchoolData()
         bindTableView()
         enterButtonDidTap()
     }
