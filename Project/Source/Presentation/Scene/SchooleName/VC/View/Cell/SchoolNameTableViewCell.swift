@@ -31,7 +31,7 @@ class SchoolNameTableViewCell: UITableViewCell{
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0))
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0))
     }
     
     private func addView() {
@@ -41,12 +41,11 @@ class SchoolNameTableViewCell: UITableViewCell{
     private func setLayout() {
         schoolNameLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(5)
-            $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(30)
         }
         
         schoolAddressLabel.snp.makeConstraints {
-            $0.top.equalTo(schoolNameLabel.snp.bottom)
+            $0.top.equalTo(schoolNameLabel.snp.bottom).offset(10)
             $0.leading.equalTo(schoolNameLabel.snp.leading)
         }
     }

@@ -30,12 +30,12 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
         $0.register(SchoolNameTableViewCell.self, forCellReuseIdentifier: SchoolNameTableViewCell.cellId)
     }
     
-    private lazy var enterButton = UIButton().then {
-        $0.backgroundColor = .red
+    private lazy var searchButton = UIButton().then {
+        $0.backgroundColor = .black
     }
     
-    private func enterButtonDidTap() {
-        enterButton.rx.tap
+    private func searchButtonDidTap() {
+        searchButton.rx.tap
             .bind(onNext: {
                 self.fetchSchoolData()
             })
@@ -58,13 +58,14 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
         
         schoolNameTableView.rowHeight = 90
         schoolNameTableView.showsVerticalScrollIndicator = false
+        schoolNameTableView.separatorStyle = .none
         
         bindTableView()
-        enterButtonDidTap()
+        searchButtonDidTap()
     }
     
     override func addView() {
-        view.addSubViews( mainTitleLabel, mainLottieAnimationView, schoolNameTextField, schoolNameTableView, enterButton)
+        view.addSubViews( mainTitleLabel, mainLottieAnimationView, schoolNameTextField, schoolNameTableView, searchButton)
     }
     
     override func setLayout() {
@@ -79,7 +80,7 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
             $0.centerX.equalToSuperview()
         }
         
-        enterButton.snp.makeConstraints {
+        searchButton.snp.makeConstraints {
             $0.top.equalTo(mainTitleLabel.snp.bottom).offset(20)
             $0.centerX.equalToSuperview()
         }
