@@ -10,6 +10,7 @@ class SchoolNameTableViewCell: UITableViewCell{
     }
     
     private let schoolAddressLabel = UILabel().then {
+        $0.textColor = .gray
         $0.text = "비아동 120-141"
         $0.font = .systemFont(ofSize: 14, weight: .medium)
     }

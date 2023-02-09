@@ -46,10 +46,15 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
         
             cell.changeCellNameData(with: [data])
         }.disposed(by: disposeBag)
+        
+        schoolNameTableView.rx.modelSelected(SchoolInfo.self)
+            .bind(onNext: { [weak self] info in
+                
+            }).disposed(by: disposeBag)
     }
     
     private func fetchSchoolData() {
-        viewModel.fetchSchoolName(schoolName: "비아")
+        viewModel.fetchSchoolName(schoolName: "광주")
     }
     
     override func configureVC() {
