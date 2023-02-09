@@ -5,16 +5,19 @@ import RxCocoa
 import SwiftyJSON
 
 protocol SchoolInfoProtocol: AnyObject {
-    var schoolData: PublishSubject<[String]> { get set }
+    var schoolData: PublishSubject<[SchoolInfo]> { get set }
+    
 }
 
 class SchoolNameViewModel: BaseViewModel {
     weak var delegate: SchoolInfoProtocol?
-    var schoolInfo: [String] = []
+    var schoolName: [SchoolInfo] = []
+    var schoolst = SchoolInfo(schoolName: "", schoolAdress: "")
     
     func fetchSchoolName(schoolName: String) {
         let provider = MoyaProvider<SchoolNameAPI>()
-        self.schoolInfo = []
+        self.schoolName = []
+        self.schoolst = SchoolInfo(schoolName: "", schoolAdress: "")
         
         provider.request(.schools(schoolName: schoolName, apiKey: "e6f3e10be1b1426cbcfb2be62afff409")) { (result) in
             switch result {
@@ -24,11 +27,13 @@ class SchoolNameViewModel: BaseViewModel {
                 let data = json["schoolInfo"].arrayValue
                 let row = data[1]["row"]
                 for index in 0...row.count-1 {
-                    self.schoolInfo.append(row[index]["SCHUL_NM"].string ?? "학교 정보가 없습니다.")
-                    self.schoolInfo.append(row[index]["ORG_RDNMA"].string ?? "학교 정보가 없습니다.")
+                    self.schoolst.schoolName = row[index]["SCHUL_NM"].string ?? "학교 정보가 없습니다"
+                    self.schoolst.schoolAdress = row[index]["ORG_RDNMA"].string ?? "학교 정보가 없습니다."
+                    self.schoolName.append(self.schoolst)
                 }
-                print(self.schoolInfo)
-                self.delegate?.schoolData.onNext(self.schoolInfo)
+        
+                print(self.schoolName)
+                self.delegate?.schoolData.onNext(self.schoolName)
                 
             case .failure(let error):
                 print(error.localizedDescription)

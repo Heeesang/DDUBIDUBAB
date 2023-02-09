@@ -6,12 +6,12 @@ class SchoolNameTableViewCell: UITableViewCell{
     
     private let schoolNameLabel = UILabel().then {
         $0.text = "비아초"
-        $0.font = .systemFont(ofSize: 14, weight: .semibold)
+        $0.font = .systemFont(ofSize: 16, weight: .semibold)
     }
     
     private let schoolAddressLabel = UILabel().then {
         $0.text = "비아동 120-141"
-        $0.font = .systemFont(ofSize: 12, weight: .medium)
+        $0.font = .systemFont(ofSize: 14, weight: .medium)
     }
     
     
@@ -19,7 +19,6 @@ class SchoolNameTableViewCell: UITableViewCell{
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         contentView.layer.cornerRadius = 10
-        contentView.backgroundColor = .red
         self.selectionStyle = .none
         
         addView()
@@ -41,21 +40,21 @@ class SchoolNameTableViewCell: UITableViewCell{
     
     private func setLayout() {
         schoolNameLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(5)
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(30)
         }
         
         schoolAddressLabel.snp.makeConstraints {
-            $0.top.equalTo(schoolNameLabel.snp.bottom).offset(5)
-            $0.trailing.equalToSuperview()
-            $0.centerY.equalToSuperview()
+            $0.top.equalTo(schoolNameLabel.snp.bottom)
+            $0.leading.equalTo(schoolNameLabel.snp.leading)
         }
     }
     
-    func changeCellData(with model: [String]) {
+    func changeCellNameData(with model: [SchoolInfo]) {
         DispatchQueue.main.async {
-            self.schoolNameLabel.text = model[1+2]
-            self.schoolAddressLabel.text = model[2+2]
+            self.schoolNameLabel.text = model[0].schoolName
+            self.schoolAddressLabel.text = model[0].schoolAdress
         }
     }
 }

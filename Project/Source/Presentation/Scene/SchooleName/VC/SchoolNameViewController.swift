@@ -6,7 +6,7 @@ import RxCocoa
 class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol {
     private let disposeBag = DisposeBag()
     
-    var schoolData = PublishSubject<[String]>()
+    var schoolData = PublishSubject<[SchoolInfo]>()
     
     private let mainLottieAnimationView = LottieAnimationView(name: "dancing-monkey").then {
         $0.contentMode = .scaleAspectFit
@@ -28,7 +28,6 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
     
     private let schoolNameTableView = UITableView().then {
         $0.register(SchoolNameTableViewCell.self, forCellReuseIdentifier: SchoolNameTableViewCell.cellId)
-        $0.backgroundColor = .blue
     }
     
     private lazy var enterButton = UIButton().then {
@@ -44,7 +43,8 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
     private func bindTableView() {
         fetchSchoolData()
         schoolData.bind(to: schoolNameTableView.rx.items(cellIdentifier: SchoolNameTableViewCell.cellId, cellType: SchoolNameTableViewCell.self)) { (row, data, cell) in
-            print("1")
+        
+            cell.changeCellNameData(with: [data])
         }.disposed(by: disposeBag)
     }
     
@@ -55,6 +55,9 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
     override func configureVC() {
         schoolNameTextField.delegate = self
         viewModel.delegate = self
+        
+        schoolNameTableView.rowHeight = 90
+        schoolNameTableView.showsVerticalScrollIndicator = false
         
         bindTableView()
         enterButtonDidTap()
