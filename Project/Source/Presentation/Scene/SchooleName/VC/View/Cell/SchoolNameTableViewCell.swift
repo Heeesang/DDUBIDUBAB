@@ -52,10 +52,10 @@ class SchoolNameTableViewCell: UITableViewCell{
         }
     }
     
-    func changeCellData(with model: [Row]) {
+    func changeCellData(with model: [String]) {
         DispatchQueue.main.async {
-            self.schoolNameLabel.text = model[3].schulNm
-            self.schoolAddressLabel.text = model[3].orgRdnma
+            self.schoolNameLabel.text = model[1+2]
+            self.schoolAddressLabel.text = model[2+2]
         }
     }
 }

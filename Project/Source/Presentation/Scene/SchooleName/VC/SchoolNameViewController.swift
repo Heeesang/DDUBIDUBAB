@@ -44,7 +44,7 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
     private func bindTableView() {
         fetchSchoolData()
         schoolData.bind(to: schoolNameTableView.rx.items(cellIdentifier: SchoolNameTableViewCell.cellId, cellType: SchoolNameTableViewCell.self)) { (row, data, cell) in
-            print("2")
+            print("1")
         }.disposed(by: disposeBag)
     }
     
@@ -54,6 +54,7 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
     
     override func configureVC() {
         schoolNameTextField.delegate = self
+        viewModel.delegate = self
         
         bindTableView()
         enterButtonDidTap()

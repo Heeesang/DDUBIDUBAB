@@ -10,7 +10,7 @@ protocol SchoolInfoProtocol: AnyObject {
 
 class SchoolNameViewModel: BaseViewModel {
     weak var delegate: SchoolInfoProtocol?
-    private var schoolInfo: [String] = []
+    var schoolInfo: [String] = []
     
     func fetchSchoolName(schoolName: String) {
         let provider = MoyaProvider<SchoolNameAPI>()
@@ -27,9 +27,9 @@ class SchoolNameViewModel: BaseViewModel {
                     self.schoolInfo.append(row[index]["SCHUL_NM"].string ?? "학교 정보가 없습니다.")
                     self.schoolInfo.append(row[index]["ORG_RDNMA"].string ?? "학교 정보가 없습니다.")
                 }
+                print(self.schoolInfo)
                 self.delegate?.schoolData.onNext(self.schoolInfo)
                 
-                print(self.schoolInfo)
             case .failure(let error):
                 print(error.localizedDescription)
             }
