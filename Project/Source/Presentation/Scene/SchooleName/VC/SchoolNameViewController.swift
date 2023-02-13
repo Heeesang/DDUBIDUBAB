@@ -3,7 +3,7 @@ import Lottie
 import RxSwift
 import RxCocoa
 
-class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol {
+final class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol {
     private let disposeBag = DisposeBag()
     var model: SchoolInfo?
     

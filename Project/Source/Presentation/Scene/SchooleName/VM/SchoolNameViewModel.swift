@@ -9,7 +9,7 @@ protocol SchoolInfoProtocol: AnyObject {
     
 }
 
-class SchoolNameViewModel: BaseViewModel {
+final class SchoolNameViewModel: BaseViewModel {
     weak var delegate: SchoolInfoProtocol?
     var schoolName: [SchoolInfo] = []
     var schoolst = SchoolInfo(schoolName: "", schoolAdress: "")

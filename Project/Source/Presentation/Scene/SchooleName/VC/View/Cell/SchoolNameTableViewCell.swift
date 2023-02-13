@@ -1,6 +1,6 @@
 import UIKit
 
-class SchoolNameTableViewCell: UITableViewCell{
+final class SchoolNameTableViewCell: UITableViewCell{
     
     static let cellId = "SchoolNameTableViewCell"
     

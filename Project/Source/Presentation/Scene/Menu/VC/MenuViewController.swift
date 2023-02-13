@@ -2,7 +2,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class MenuViewController: BaseVC<MenuViewModel> {
+final class MenuViewController: BaseVC<MenuViewModel> {
     var model: SchoolInfo?
     
     private let titleLabel = UILabel().then {

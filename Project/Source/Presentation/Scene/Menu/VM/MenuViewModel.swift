@@ -3,6 +3,6 @@ import Moya
 import RxSwift
 import RxCocoa
 
-class MenuViewModel: BaseViewModel {
+final class MenuViewModel: BaseViewModel {
     
 }
