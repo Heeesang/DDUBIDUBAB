@@ -49,7 +49,7 @@ class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol 
         
         schoolNameTableView.rx.modelSelected(SchoolInfo.self)
             .bind(onNext: { [weak self] info in
-                
+                self?.viewModel.pushMenuVC(model: info)
             }).disposed(by: disposeBag)
     }
     
