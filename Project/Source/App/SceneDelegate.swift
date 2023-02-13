@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: s)
         window?.rootViewController = navVC
-        coordinator = MainCoordinator(navigationController: navVC)
+        coordinator = AppCoordinator(navigationController: navVC)
         coordinator?.start()
         window?.makeKeyAndVisible()
     }
