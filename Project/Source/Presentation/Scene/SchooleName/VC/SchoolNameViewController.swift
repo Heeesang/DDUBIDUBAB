@@ -5,6 +5,7 @@ import RxCocoa
 
 class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoProtocol {
     private let disposeBag = DisposeBag()
+    var model: SchoolInfo?
     
     var schoolData = PublishSubject<[SchoolInfo]>()
     

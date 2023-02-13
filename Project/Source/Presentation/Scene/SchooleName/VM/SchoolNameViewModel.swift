@@ -42,6 +42,6 @@ class SchoolNameViewModel: BaseViewModel {
     }
     
     func pushMenuVC(model: SchoolInfo) {
-        coordinator.navigate(to: .menuRequired)
+        coordinator.navigate(to: .menuRequired(model: model))
     }
 }

@@ -3,6 +3,8 @@ import RxSwift
 import RxCocoa
 
 class MenuViewController: BaseVC<MenuViewModel> {
+    var model: SchoolInfo?
+    
     private let titleLabel = UILabel().then {
         $0.text = "밥"
         $0.font = .systemFont(ofSize: 24, weight: .bold)
@@ -11,6 +13,16 @@ class MenuViewController: BaseVC<MenuViewModel> {
     private let menuContainerView = UIView().then {
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    init(viewModel: MenuViewModel, model: SchoolInfo) {
+        super.init(viewModel: viewModel)
+        self.model = model
+
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func addView() {

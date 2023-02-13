@@ -1,5 +1,5 @@
 enum BabStep {
     case popVC
     
-    case menuRequired
+    case menuRequired(model: SchoolInfo)
 }

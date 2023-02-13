@@ -12,8 +12,8 @@ final class AppCoordinator: BaseCoordinator {
     
     override func navigate(to step: BabStep) {
         switch step {
-        case .menuRequired:
-            menuIsRequired()
+        case .menuRequired(let model):
+            menuIsRequired(model: model)
         default:
             return
         }
@@ -21,10 +21,10 @@ final class AppCoordinator: BaseCoordinator {
 }
 
 extension AppCoordinator {
-    private func menuIsRequired() {
+    private func menuIsRequired(model: SchoolInfo) {
         let vc = MenuCoordinator(navigationController: navigationController)
         vc.parentCoordinator = self
         childCoordinatrs.append(vc)
-        vc.start()
+        vc.startMenuVC(model: model)
     }
 }

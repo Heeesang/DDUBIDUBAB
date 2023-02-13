@@ -2,10 +2,10 @@ import UIKit
 
 final class MenuCoordinator: BaseCoordinator {
     
-    override func start() {
+    func startMenuVC(model: SchoolInfo) {
         let vm = MenuViewModel(coordinator: self)
-        let vc = MenuViewController(viewModel: vm)
+        let vc = MenuViewController(viewModel: vm, model: model) 
         
-        navigationController.setViewControllers([vc], animated: true)
+        navigationController.pushViewController(vc, animated: true)
     }
 }
