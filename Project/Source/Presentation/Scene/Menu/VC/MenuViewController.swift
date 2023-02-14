@@ -29,6 +29,10 @@ final class MenuViewController: BaseVC<MenuViewModel> {
         view.addSubViews(titleLabel, menuContainerView)
     }
     
+    override func configureVC() {
+        titleLabel.text = model?.schoolCode
+    }
+    
     override func setLayout() {
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
