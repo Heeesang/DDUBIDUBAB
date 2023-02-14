@@ -15,7 +15,7 @@ final class SchoolNameViewModel: BaseViewModel {
     var schoolst = SchoolInfo(schoolName: "", schoolAdress: "")
     
     func fetchSchoolName(schoolName: String) {
-        let provider = MoyaProvider<SchoolNameAPI>()
+        let provider = MoyaProvider<SchoolAPI>()
         self.schoolName = []
         self.schoolst = SchoolInfo(schoolName: "", schoolAdress: "")
         
