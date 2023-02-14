@@ -12,12 +12,12 @@ protocol SchoolInfoProtocol: AnyObject {
 final class SchoolNameViewModel: BaseViewModel {
     weak var delegate: SchoolInfoProtocol?
     var schoolName: [SchoolInfo] = []
-    var schoolst = SchoolInfo(schoolName: "", schoolAdress: "")
+    var schoolst = SchoolInfo(schoolCode: "", schoolName: "", schoolAdress: "")
     
     func fetchSchoolName(schoolName: String) {
         let provider = MoyaProvider<SchoolAPI>()
         self.schoolName = []
-        self.schoolst = SchoolInfo(schoolName: "", schoolAdress: "")
+        self.schoolst = SchoolInfo(schoolCode: "", schoolName: "", schoolAdress: "")
         
         provider.request(.schools(schoolName: schoolName, apiKey: "e6f3e10be1b1426cbcfb2be62afff409")) { (result) in
             switch result {
@@ -27,6 +27,7 @@ final class SchoolNameViewModel: BaseViewModel {
                 let data = json["schoolInfo"].arrayValue
                 let row = data[1]["row"]
                 for index in 0...row.count-1 {
+                    self.schoolst.schoolCode = row[index]["SD_SCHUL_CODE"].string ?? "학교 정보가 없습니다"
                     self.schoolst.schoolName = row[index]["SCHUL_NM"].string ?? "학교 정보가 없습니다"
                     self.schoolst.schoolAdress = row[index]["ORG_RDNMA"].string ?? "학교 정보가 없습니다."
                     self.schoolName.append(self.schoolst)
