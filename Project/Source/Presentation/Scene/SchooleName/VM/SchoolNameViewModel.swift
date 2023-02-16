@@ -6,7 +6,6 @@ import SwiftyJSON
 
 protocol SchoolInfoProtocol: AnyObject {
     var schoolData: PublishSubject<[SchoolInfo]> { get set }
-    
 }
 
 final class SchoolNameViewModel: BaseViewModel {

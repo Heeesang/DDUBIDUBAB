@@ -42,7 +42,6 @@ final class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoPro
             })
     }
     private func bindTableView() {
-        fetchSchoolData()
         schoolData.bind(to: schoolNameTableView.rx.items(cellIdentifier: SchoolNameTableViewCell.cellId, cellType: SchoolNameTableViewCell.self)) { (row, data, cell) in
         
             cell.changeCellNameData(with: [data])
@@ -66,6 +65,7 @@ final class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoPro
         schoolNameTableView.showsVerticalScrollIndicator = false
         schoolNameTableView.separatorStyle = .none
         
+        fetchSchoolData()
         bindTableView()
         searchButtonDidTap()
     }
