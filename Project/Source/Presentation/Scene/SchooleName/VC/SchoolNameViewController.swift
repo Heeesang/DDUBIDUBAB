@@ -54,7 +54,7 @@ final class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoPro
     }
     
     private func fetchSchoolData() {
-        viewModel.fetchSchoolName(schoolName: "광주")
+        viewModel.fetchSchoolName(schoolName: "광주소")
     }
     
     override func configureVC() {

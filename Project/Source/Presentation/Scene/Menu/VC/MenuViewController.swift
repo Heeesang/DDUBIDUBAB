@@ -5,14 +5,13 @@ import RxCocoa
 final class MenuViewController: BaseVC<MenuViewModel> {
     var model: SchoolInfo?
     
-    private let menuType: [String] = ["아침", "점심", "저녁"]
+    private let menuType: [String] = ["조식", "중식", "석식"]
     
     private var dateFormatter = DateFormatter().then {
         $0.dateFormat = "yyyy년 MM월 dd일"
     }
     
     private let titleLabel = UILabel().then {
-        $0.text = "밥"
         $0.font = .systemFont(ofSize: 21, weight: .bold)
     }
     
@@ -37,8 +36,8 @@ final class MenuViewController: BaseVC<MenuViewModel> {
     }
     
     private func fetchMenuData() {
-        guard let atptCode = model?.atptCode else { return  }
-        guard let schoolCode = model?.schoolCode else { return  }
+        guard let atptCode = model?.atptCode else { return }
+        guard let schoolCode = model?.schoolCode else { return }
         
         viewModel.fetchMenuInfo(atptCode: atptCode, schoolCode: schoolCode)
     }
