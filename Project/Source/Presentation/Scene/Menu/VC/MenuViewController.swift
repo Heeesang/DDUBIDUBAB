@@ -25,11 +25,20 @@ final class MenuViewController: BaseVC<MenuViewModel> {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func fetchMenuData() {
+        guard let atptCode = model?.atptCode else { return  }
+        guard let schoolCode = model?.schoolCode else { return  }
+        
+        viewModel.fetchMenuInfo(atptCode: atptCode, schoolCode: schoolCode)
+    }
+    
     override func addView() {
         view.addSubViews(titleLabel, menuContainerView)
     }
     
     override func configureVC() {
+        
+        fetchMenuData()
         titleLabel.text = model?.schoolCode
     }
     
