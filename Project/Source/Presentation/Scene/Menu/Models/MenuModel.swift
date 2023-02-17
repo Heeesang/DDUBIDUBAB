@@ -1,6 +1,6 @@
 import Foundation
 
-struct menuInfo: Codable {
+struct MenuInfo: Codable {
     var dishName: String
     var mealDay: String
     var mealName: String
