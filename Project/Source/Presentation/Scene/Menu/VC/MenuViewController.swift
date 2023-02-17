@@ -37,10 +37,14 @@ final class MenuViewController: BaseVC<MenuViewModel> {
     }
     
     private func fetchMenuData() {
+        dateFormatter.dateFormat = "yyyyMMdd"
+        let date = dateFormatter.string(from: Date())
+        
         guard let atptCode = model?.atptCode else { return }
         guard let schoolCode = model?.schoolCode else { return }
+        let mealDate = date
         
-        viewModel.fetchMenuInfo(atptCode: atptCode, schoolCode: schoolCode)
+        viewModel.fetchMenuInfo(mealDate: mealDate, atptCode: atptCode, schoolCode: schoolCode)
     }
     
     override func addView() {

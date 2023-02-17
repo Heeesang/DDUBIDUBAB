@@ -3,7 +3,7 @@ import Foundation
 
 public enum SchoolAPI {
     case schools(schoolName: String, apiKey: String)
-    case menu(atptCode: String, schoolCode: String, apiKey: String)
+    case menu(mealDate: String, atptCode: String, schoolCode: String, apiKey: String)
 }
 
 extension SchoolAPI: TargetType {
@@ -38,8 +38,8 @@ extension SchoolAPI: TargetType {
         case .schools(let name, let apiKey):
             return .requestParameters(parameters: ["KEY": apiKey, "SCHUL_NM": name, "type": "JSON"], encoding:
                                         URLEncoding.queryString)
-        case .menu(let atptCode, let schoolCode, let apiKey):
-            return .requestParameters(parameters: ["KEY": apiKey,"ATPT_OFCDC_SC_CODE": atptCode, "SD_SCHUL_CODE": schoolCode, "type": "JSON"], encoding:
+        case .menu(let mealDate, let atptCode, let schoolCode, let apiKey):
+            return .requestParameters(parameters: ["KEY": apiKey,"ATPT_OFCDC_SC_CODE": atptCode, "SD_SCHUL_CODE": schoolCode, "MLSV_YMD": mealDate, "type": "JSON"], encoding:
                                         URLEncoding.queryString)
         }
     }
