@@ -28,6 +28,7 @@ final class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoPro
     }
     
     private let schoolNameTableView = UITableView().then {
+        $0.backgroundColor = .white
         $0.register(SchoolNameTableViewCell.self, forCellReuseIdentifier: SchoolNameTableViewCell.cellId)
     }
     
