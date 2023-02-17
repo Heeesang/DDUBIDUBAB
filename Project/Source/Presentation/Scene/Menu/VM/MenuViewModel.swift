@@ -13,7 +13,7 @@ final class MenuViewModel: BaseViewModel {
     var menuList: [MenuInfo] = []
     var menu = MenuInfo(dishName: "", mealDay: "", mealName: "")
     
-    func fetchSchoolName(atptCode: String, schoolCode: String) {
+    func fetchMenuInfo(atptCode: String, schoolCode: String) {
         let provider = MoyaProvider<SchoolAPI>()
         self.menuList = []
         self.menu = MenuInfo(dishName: "", mealDay: "", mealName: "")
