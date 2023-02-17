@@ -5,9 +5,13 @@ import RxCocoa
 final class MenuViewController: BaseVC<MenuViewModel> {
     var model: SchoolInfo?
     
+    var dateFormatter = DateFormatter().then {
+        $0.dateFormat = "yyyy년 MM월 dd일"
+    }
+    
     private let titleLabel = UILabel().then {
         $0.text = "밥"
-        $0.font = .systemFont(ofSize: 24, weight: .bold)
+        $0.font = .systemFont(ofSize: 21, weight: .bold)
     }
     
     private let menuContainerView = UIView().then {
@@ -37,20 +41,21 @@ final class MenuViewController: BaseVC<MenuViewModel> {
     }
     
     override func configureVC() {
+        let date = dateFormatter.string(from: Date())
         
         fetchMenuData()
-        titleLabel.text = model?.schoolCode
+        titleLabel.text = date
     }
     
     override func setLayout() {
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             $0.centerX.equalToSuperview()
         }
         
         menuContainerView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(25)
-            $0.bottom.equalToSuperview().inset(230)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(30)
+            $0.bottom.equalToSuperview().inset(210)
             $0.leading.trailing.equalToSuperview().inset(25)
         }
     }
