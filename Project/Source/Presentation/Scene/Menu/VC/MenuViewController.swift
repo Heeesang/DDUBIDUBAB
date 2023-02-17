@@ -21,6 +21,7 @@ final class MenuViewController: BaseVC<MenuViewModel> {
     }
     
     private lazy var menuTypeSegmentedControl = UISegmentedControl(items: menuType).then {
+        $0.selectedSegmentIndex = 1
         $0.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray, .font: UIFont.systemFont(ofSize: 16, weight: .semibold)], for: .normal)
         $0.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 17, weight: .semibold)], for: .selected)
     }

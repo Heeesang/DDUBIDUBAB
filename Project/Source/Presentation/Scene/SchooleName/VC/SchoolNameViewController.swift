@@ -31,16 +31,6 @@ final class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoPro
         $0.register(SchoolNameTableViewCell.self, forCellReuseIdentifier: SchoolNameTableViewCell.cellId)
     }
     
-    private lazy var searchButton = UIButton().then {
-        $0.backgroundColor = .black
-    }
-    
-    private func searchButtonDidTap() {
-        searchButton.rx.tap
-            .bind(onNext: {
-                self.fetchSchoolData()
-            })
-    }
     private func bindTableView() {
         schoolData.bind(to: schoolNameTableView.rx.items(cellIdentifier: SchoolNameTableViewCell.cellId, cellType: SchoolNameTableViewCell.self)) { (row, data, cell) in
         
@@ -54,7 +44,7 @@ final class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoPro
     }
     
     private func fetchSchoolData() {
-        viewModel.fetchSchoolName(schoolName: "광주소")
+        viewModel.fetchSchoolName(schoolName: "광주")
     }
     
     override func configureVC() {
@@ -67,11 +57,10 @@ final class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoPro
         
         fetchSchoolData()
         bindTableView()
-        searchButtonDidTap()
     }
     
     override func addView() {
-        view.addSubViews( mainTitleLabel, mainLottieAnimationView, schoolNameTextField, schoolNameTableView, searchButton)
+        view.addSubViews( mainTitleLabel, mainLottieAnimationView, schoolNameTextField, schoolNameTableView)
     }
     
     override func setLayout() {
@@ -83,11 +72,6 @@ final class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoPro
         
         mainTitleLabel.snp.makeConstraints {
             $0.top.equalTo(mainLottieAnimationView.snp.bottom)
-            $0.centerX.equalToSuperview()
-        }
-        
-        searchButton.snp.makeConstraints {
-            $0.top.equalTo(mainTitleLabel.snp.bottom).offset(20)
             $0.centerX.equalToSuperview()
         }
         
