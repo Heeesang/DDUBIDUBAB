@@ -34,6 +34,7 @@
 		05D7CF23299248C0009B21CC /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 05D7CF22299248C0009B21CC /* SwiftyJSON */; };
 		05D7CF26299A484D009B21CC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D7CF25299A484D009B21CC /* AppCoordinator.swift */; };
 		05D7CF29299A5AF4009B21CC /* MenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D7CF28299A5AF4009B21CC /* MenuCoordinator.swift */; };
+		05D7CF2C299F5A93009B21CC /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D7CF2B299F5A93009B21CC /* MenuModel.swift */; };
 		05E269B329680A3C008E11A2 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 05E269B229680A3C008E11A2 /* RxCocoa */; };
 		05E269B629680FDE008E11A2 /* SchoolAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E269B529680FDE008E11A2 /* SchoolAPI.swift */; };
 /* End PBXBuildFile section */
@@ -63,6 +64,7 @@
 		0587951F2948D2280018C5EC /* SchoolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolModel.swift; sourceTree = "<group>"; };
 		05D7CF25299A484D009B21CC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		05D7CF28299A5AF4009B21CC /* MenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCoordinator.swift; sourceTree = "<group>"; };
+		05D7CF2B299F5A93009B21CC /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		05E269B529680FDE008E11A2 /* SchoolAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +189,7 @@
 		0579888A2942D3C40006A94E /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				05D7CF2A299F5A81009B21CC /* Models */,
 				0579889E2942E0860006A94E /* VM */,
 				0579889D2942E07E0006A94E /* VC */,
 			);
@@ -346,6 +349,14 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		05D7CF2A299F5A81009B21CC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				05D7CF2B299F5A93009B21CC /* MenuModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -450,6 +461,7 @@
 				0579889A2942DE000006A94E /* BaseViewModel.swift in Sources */,
 				05D7CF26299A484D009B21CC /* AppCoordinator.swift in Sources */,
 				057988982942DDDB0006A94E /* BaseVC.swift in Sources */,
+				05D7CF2C299F5A93009B21CC /* MenuModel.swift in Sources */,
 				05D7CF29299A5AF4009B21CC /* MenuCoordinator.swift in Sources */,
 				0579889C2942DF4F0006A94E /* MainCoordinator.swift in Sources */,
 				057988922942DBCA0006A94E /* BaseCoordinator.swift in Sources */,
