@@ -44,10 +44,19 @@ final class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoPro
             }).disposed(by: disposeBag)
     }
     
-    private func fetchSchoolData() {
-        guard let schoolName = schoolNameTextField.text else { return }
-        
+    private func fetchSchoolData(schoolName: String) {
         viewModel.fetchSchoolName(schoolName: schoolName)
+    }
+    
+    private func onLoad() {
+        guard let schoolName = self.schoolNameTextField.text else { return }
+        
+        DispatchQueue.global().async {
+            self.fetchSchoolData(schoolName: schoolName)
+            DispatchQueue.main.async {
+                self.bindTableView()
+            }
+        }
     }
     
     override func configureVC() {
@@ -58,8 +67,7 @@ final class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoPro
         schoolNameTableView.showsVerticalScrollIndicator = false
         schoolNameTableView.separatorStyle = .none
         
-        fetchSchoolData()
-        bindTableView()
+        onLoad()
     }
     
     override func addView() {
@@ -104,7 +112,7 @@ extension SchoolNameViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         textField.layer.borderColor = UIColor.black.cgColor
-        fetchSchoolData()
+        fetchSchoolData(schoolName: textField.text ?? "")
         return true
     }
 }
