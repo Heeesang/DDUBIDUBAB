@@ -23,14 +23,20 @@ final class SchoolNameViewModel: BaseViewModel {
             case .success(let response):
                 let responseData = response.data
                 let json = JSON(responseData)
-                let data = json["schoolInfo"].arrayValue
-                let row = data[1]["row"]
-                for index in 0...row.count-1 {
-                    self.schoolst.atptCode = row[index]["ATPT_OFCDC_SC_CODE"].string ?? "학교 정보가 없습니다"
-                    self.schoolst.schoolCode = row[index]["SD_SCHUL_CODE"].string ?? "학교 정보가 없습니다"
-                    self.schoolst.schoolName = row[index]["SCHUL_NM"].string ?? "학교 정보가 없습니다"
-                    self.schoolst.schoolAdress = row[index]["ORG_RDNMA"].string ?? "학교 정보가 없습니다."
+                if json["RESULT"]["CODE"] == "INFO-200" {
+                    self.schoolst.schoolName = "학교 정보가 없습니다"
                     self.schoolName.append(self.schoolst)
+                }
+                else {
+                    let data = json["schoolInfo"].arrayValue
+                    let row = data[1]["row"]
+                    for index in 0...row.count-1 {
+                        self.schoolst.atptCode = row[index]["ATPT_OFCDC_SC_CODE"].string ?? "학교 정보가 없습니다"
+                        self.schoolst.schoolCode = row[index]["SD_SCHUL_CODE"].string ?? "학교 정보가 없습니다"
+                        self.schoolst.schoolName = row[index]["SCHUL_NM"].string ?? "학교 정보가 없습니다"
+                        self.schoolst.schoolAdress = row[index]["ORG_RDNMA"].string ?? "학교 정보가 없습니다."
+                        self.schoolName.append(self.schoolst)
+                    }
                 }
         
                 print(self.schoolName)

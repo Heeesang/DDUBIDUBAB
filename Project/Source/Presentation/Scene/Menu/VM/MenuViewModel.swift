@@ -23,7 +23,7 @@ final class MenuViewModel: BaseViewModel {
             case .success(let response):
                 let responseData = response.data
                 let json = JSON(responseData)
-                if json["RESULT"]["CODE"] == "INFO-200"{
+                if json["RESULT"]["CODE"] == "INFO-200" {
                     self.menu.dishName = "밥 없는 날!"
                     self.menuList.append(self.menu)
                 }
