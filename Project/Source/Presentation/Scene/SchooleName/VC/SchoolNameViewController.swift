@@ -45,7 +45,9 @@ final class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoPro
     }
     
     private func fetchSchoolData() {
-        viewModel.fetchSchoolName(schoolName: "광주")
+        guard let schoolName = schoolNameTextField.text else { return }
+        
+        viewModel.fetchSchoolName(schoolName: schoolName)
     }
     
     override func configureVC() {
@@ -100,6 +102,9 @@ extension SchoolNameViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return textField.resignFirstResponder()
+        textField.resignFirstResponder()
+        textField.layer.borderColor = UIColor.black.cgColor
+        fetchSchoolData()
+        return true
     }
 }
