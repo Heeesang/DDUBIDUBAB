@@ -38,6 +38,7 @@ final class MenuViewModel: BaseViewModel {
                     }
                 }
                 
+                self.delegate?.menuData.onNext(self.menuList)
                 print(self.menuList)
             case .failure(let error):
                 print(error.localizedDescription)

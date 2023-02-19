@@ -2,8 +2,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class MenuViewController: BaseVC<MenuViewModel> {
+final class MenuViewController: BaseVC<MenuViewModel>, MenuInfoProtocol {
     var model: SchoolInfo?
+    
+    var menuData = PublishSubject<[MenuInfo]>()
     
     private let menuType: [String] = ["조식", "중식", "석식"]
     
@@ -29,7 +31,6 @@ final class MenuViewController: BaseVC<MenuViewModel> {
     init(viewModel: MenuViewModel, model: SchoolInfo) {
         super.init(viewModel: viewModel)
         self.model = model
-
     }
     
     required init?(coder: NSCoder) {
@@ -44,7 +45,7 @@ final class MenuViewController: BaseVC<MenuViewModel> {
         guard let schoolCode = model?.schoolCode else { return }
         let mealDate = date
         
-        viewModel.fetchMenuInfo(mealDate: mealDate, atptCode: atptCode, schoolCode: schoolCode)
+        viewModel.fetchMenuInfo(mealDate: "20221207", atptCode: atptCode, schoolCode: schoolCode)
     }
     
     override func addView() {
