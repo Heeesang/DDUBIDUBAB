@@ -35,6 +35,7 @@
 		05D7CF26299A484D009B21CC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D7CF25299A484D009B21CC /* AppCoordinator.swift */; };
 		05D7CF29299A5AF4009B21CC /* MenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D7CF28299A5AF4009B21CC /* MenuCoordinator.swift */; };
 		05D7CF2C299F5A93009B21CC /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D7CF2B299F5A93009B21CC /* MenuModel.swift */; };
+		05D7CF3029A21A8F009B21CC /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D7CF2F29A21A8F009B21CC /* MenuCell.swift */; };
 		05E269B329680A3C008E11A2 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 05E269B229680A3C008E11A2 /* RxCocoa */; };
 		05E269B629680FDE008E11A2 /* SchoolAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E269B529680FDE008E11A2 /* SchoolAPI.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		05D7CF25299A484D009B21CC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		05D7CF28299A5AF4009B21CC /* MenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCoordinator.swift; sourceTree = "<group>"; };
 		05D7CF2B299F5A93009B21CC /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
+		05D7CF2F29A21A8F009B21CC /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		05E269B529680FDE008E11A2 /* SchoolAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -253,6 +255,7 @@
 		0579889D2942E07E0006A94E /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				05D7CF2D29A219CD009B21CC /* View */,
 				0579889F2942E2230006A94E /* MenuViewController.swift */,
 			);
 			path = VC;
@@ -355,6 +358,14 @@
 				05D7CF2B299F5A93009B21CC /* MenuModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		05D7CF2D29A219CD009B21CC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				05D7CF2F29A21A8F009B21CC /* MenuCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -462,6 +473,7 @@
 				05D7CF26299A484D009B21CC /* AppCoordinator.swift in Sources */,
 				057988982942DDDB0006A94E /* BaseVC.swift in Sources */,
 				05D7CF2C299F5A93009B21CC /* MenuModel.swift in Sources */,
+				05D7CF3029A21A8F009B21CC /* MenuCell.swift in Sources */,
 				05D7CF29299A5AF4009B21CC /* MenuCoordinator.swift in Sources */,
 				0579889C2942DF4F0006A94E /* MainCoordinator.swift in Sources */,
 				057988922942DBCA0006A94E /* BaseCoordinator.swift in Sources */,

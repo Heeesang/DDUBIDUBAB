@@ -36,6 +36,7 @@ final class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoPro
         schoolData.bind(to: schoolNameTableView.rx.items(cellIdentifier: SchoolNameTableViewCell.cellId, cellType: SchoolNameTableViewCell.self)) { (row, data, cell) in
         
             cell.changeCellNameData(with: [data])
+            print([data])
         }.disposed(by: disposeBag)
         
         schoolNameTableView.rx.modelSelected(SchoolInfo.self)

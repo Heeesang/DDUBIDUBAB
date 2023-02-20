@@ -6,6 +6,7 @@ final class MenuViewController: BaseVC<MenuViewModel>, MenuInfoProtocol {
     var model: SchoolInfo?
     
     var menuData = PublishSubject<[MenuInfo]>()
+    private let disposeBag = DisposeBag()
     
     private let menuType: [String] = ["조식", "중식", "석식"]
     
@@ -20,6 +21,11 @@ final class MenuViewController: BaseVC<MenuViewModel>, MenuInfoProtocol {
     private let menuContainerView = UIView().then {
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    private let menuTableView = UITableView().then {
+        $0.backgroundColor = .gray
+        $0.register(MenuCell.self, forCellReuseIdentifier: MenuCell.cellId)
     }
     
     private lazy var menuTypeSegmentedControl = UISegmentedControl(items: menuType).then {
@@ -37,6 +43,21 @@ final class MenuViewController: BaseVC<MenuViewModel>, MenuInfoProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func bindTableView() {
+        let menu = menuData.subscribe(onNext: { data in
+            
+        })
+        
+        
+        
+        menuData.bind(to: menuTableView.rx.items(cellIdentifier: MenuCell.cellId, cellType: MenuCell.self)) { (row, data, cell) in
+            let menuList = data.dishName.components(separatedBy: "<br/>")
+            cell.changeCellNameData(with: menuList[0])
+            print(menuList)
+            
+        }.disposed(by: disposeBag)
+    }
+    
     private func fetchMenuData() {
         dateFormatter.dateFormat = "yyyyMMdd"
         let date = dateFormatter.string(from: Date())
@@ -50,11 +71,14 @@ final class MenuViewController: BaseVC<MenuViewModel>, MenuInfoProtocol {
     
     override func addView() {
         view.addSubViews(titleLabel, menuContainerView, menuTypeSegmentedControl)
+        menuContainerView.addSubview(menuTableView)
     }
     
     override func configureVC() {
         let date = dateFormatter.string(from: Date())
+        viewModel.delegate = self
         
+        bindTableView()
         fetchMenuData()
         titleLabel.text = date
     }
@@ -76,6 +100,10 @@ final class MenuViewController: BaseVC<MenuViewModel>, MenuInfoProtocol {
             $0.centerX.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(50)
             $0.height.equalTo(60)
+        }
+        
+        menuTableView.snp.makeConstraints {
+            $0.width.height.equalToSuperview()
         }
     }
 }
