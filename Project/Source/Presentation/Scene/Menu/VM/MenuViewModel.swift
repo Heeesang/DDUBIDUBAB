@@ -6,17 +6,12 @@ import SwiftyJSON
 
 protocol MenuInfoProtocol: AnyObject {
     var menuData: PublishSubject<[MenuInfo]> { get set }
-    var dishName: PublishSubject<[String]> { get set }
 }
 
 final class MenuViewModel: BaseViewModel {
     weak var delegate: MenuInfoProtocol?
     var menuInfoList: [MenuInfo] = []
     var menuInfo = MenuInfo(dishName: "", mealDay: "", mealName: "")
-    
-    var disNameList: [String] = []
-    var disName: String = ""
-    
     
     func fetchMenuInfo(mealDate: String, atptCode: String, schoolCode: String) {
         let provider = MoyaProvider<SchoolAPI>()
@@ -39,14 +34,13 @@ final class MenuViewModel: BaseViewModel {
                         self.menuInfo.dishName = row[index]["DDISH_NM"].string ?? "급식 정보가 없습니다."
                         self.menuInfo.mealDay = row[index]["MLSV_YMD"].string ?? "급식 정보가 없습니다."
                         self.menuInfo.mealName = row[index]["MMEAL_SC_NM"].string ?? "급식 정보가 없습니다."
+                        
+                        self.menuInfo.dishName = self.menuInfo.dishName.replacingOccurrences(of: "<br/>", with: "\n\n")
+                        self.menuInfo.dishName = self.menuInfo.dishName.replacingOccurrences(of: "[0-9.()]", with: "", options: .regularExpression)
                         self.menuInfoList.append(self.menuInfo)
-                        self.disName = self.menuInfo.dishName.replacingOccurrences(of: "<br/>", with: "\n\n")
-                        self.disName = self.disName.replacingOccurrences(of: "[0-9.()]", with: "", options: .regularExpression)
-                        self.disNameList.append(self.disName)
                     }
                 }
                 
-                self.delegate?.dishName.onNext(self.disNameList)
                 self.delegate?.menuData.onNext(self.menuInfoList)
                 print(self.menuInfoList)
             case .failure(let error):
