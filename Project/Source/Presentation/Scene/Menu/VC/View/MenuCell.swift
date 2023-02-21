@@ -4,7 +4,9 @@ final class MenuCell: UITableViewCell {
     
     static let cellId = "MenuTableViewCell"
     
-    private let menuNameLabel = UILabel().then {
+    private let menuNameTextView = UITextView().then {
+        $0.tintColor = .clear
+        $0.textAlignment = .center
         $0.font = .systemFont(ofSize: 16, weight: .semibold)
     }
     
@@ -28,18 +30,21 @@ final class MenuCell: UITableViewCell {
     }
     
     private func addView() {
-        contentView.addSubViews(menuNameLabel)
+        contentView.addSubViews(menuNameTextView)
     }
     
     private func setLayout() {
-        menuNameLabel.snp.makeConstraints {
-            $0.center.equalToSuperview()
+        menuNameTextView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(80)
+            $0.centerX.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(40)
         }
     }
     
     func changeCellNameData(with model: String) {
         DispatchQueue.main.async {
-            self.menuNameLabel.text = model
+            self.menuNameTextView.text = model
         }
     }
 }

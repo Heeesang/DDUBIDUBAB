@@ -6,6 +6,8 @@ final class MenuViewController: BaseVC<MenuViewModel>, MenuInfoProtocol {
     var model: SchoolInfo?
     
     var menuData = PublishSubject<[MenuInfo]>()
+    var dishName = PublishSubject<[String]>()
+    
     private let disposeBag = DisposeBag()
     
     private let menuType: [String] = ["조식", "중식", "석식"]
@@ -44,16 +46,9 @@ final class MenuViewController: BaseVC<MenuViewModel>, MenuInfoProtocol {
     }
     
     private func bindTableView() {
-        let menu = menuData.subscribe(onNext: { data in
-            
-        })
-        
-        
-        
-        menuData.bind(to: menuTableView.rx.items(cellIdentifier: MenuCell.cellId, cellType: MenuCell.self)) { (row, data, cell) in
-            let menuList = data.dishName.components(separatedBy: "<br/>")
-            cell.changeCellNameData(with: menuList[0])
-            print(menuList)
+        dishName.bind(to: menuTableView.rx.items(cellIdentifier: MenuCell.cellId, cellType: MenuCell.self)) { (row, data, cell) in
+            cell.changeCellNameData(with: data)
+            print(data)
             
         }.disposed(by: disposeBag)
     }
@@ -77,6 +72,8 @@ final class MenuViewController: BaseVC<MenuViewModel>, MenuInfoProtocol {
     override func configureVC() {
         let date = dateFormatter.string(from: Date())
         viewModel.delegate = self
+        
+        menuTableView.rowHeight = 500
         
         bindTableView()
         fetchMenuData()
