@@ -7,6 +7,8 @@ final class MenuViewController: BaseVC<MenuViewModel>, MenuInfoProtocol {
     
     var menuData = PublishSubject<[MenuInfo]>()
     
+    var menuName: MenuInfo = MenuInfo(dishName: "", mealDay: "", mealName: "")
+    
     private let disposeBag = DisposeBag()
     
     private let menuType: [String] = ["조식", "중식", "석식"]
@@ -24,15 +26,16 @@ final class MenuViewController: BaseVC<MenuViewModel>, MenuInfoProtocol {
         $0.layer.borderColor = UIColor.black.cgColor
     }
     
-    private let menuTableView = UITableView().then {
-        $0.backgroundColor = .gray
-        $0.register(MenuCell.self, forCellReuseIdentifier: MenuCell.cellId)
+    private let verticalFlowLayout = UICollectionViewFlowLayout().then {
+        $0.scrollDirection = .horizontal
+        $0.itemSize = CGSize(width: 350, height: 402)
     }
     
-    private lazy var menuTypeSegmentedControl = UISegmentedControl(items: menuType).then {
-        $0.selectedSegmentIndex = 1
-        $0.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray, .font: UIFont.systemFont(ofSize: 16, weight: .semibold)], for: .normal)
-        $0.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 17, weight: .semibold)], for: .selected)
+    private lazy var menuNameCollectionView = UICollectionView(frame: .zero, collectionViewLayout: verticalFlowLayout).then {
+        $0.register(MenuCollectionViewCell.self, forCellWithReuseIdentifier: MenuCollectionViewCell.cellId)
+        $0.backgroundColor = .white
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.black.cgColor
     }
     
     init(viewModel: MenuViewModel, model: SchoolInfo) {
@@ -42,14 +45,6 @@ final class MenuViewController: BaseVC<MenuViewModel>, MenuInfoProtocol {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func bindTableView() {
-        menuData.bind(to: menuTableView.rx.items(cellIdentifier: MenuCell.cellId, cellType: MenuCell.self)) { (row, data, cell) in
-            cell.changeCellNameData(with: data.dishName)
-            print(data)
-            
-        }.disposed(by: disposeBag)
     }
     
     private func fetchMenuData() {
@@ -62,19 +57,22 @@ final class MenuViewController: BaseVC<MenuViewModel>, MenuInfoProtocol {
         
         viewModel.fetchMenuInfo(mealDate: "20221207", atptCode: atptCode, schoolCode: schoolCode)
     }
+
+    private func bindCollectionView() {
+        menuData.bind(to: menuNameCollectionView.rx.items(cellIdentifier: MenuCollectionViewCell.cellId, cellType: MenuCollectionViewCell.self)) { (row, data, cell) in
+            cell.changeCellNameData(with: data)
+        }
+    }
     
     override func addView() {
-        view.addSubViews(titleLabel, menuContainerView, menuTypeSegmentedControl)
-        menuContainerView.addSubview(menuTableView)
+        view.addSubViews(titleLabel, menuNameCollectionView)
     }
     
     override func configureVC() {
         let date = dateFormatter.string(from: Date())
         viewModel.delegate = self
         
-        menuTableView.rowHeight = 480
-        
-        bindTableView()
+        bindCollectionView()
         fetchMenuData()
         titleLabel.text = date
     }
@@ -85,21 +83,10 @@ final class MenuViewController: BaseVC<MenuViewModel>, MenuInfoProtocol {
             $0.centerX.equalToSuperview()
         }
         
-        menuContainerView.snp.makeConstraints {
+        menuNameCollectionView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(30)
-            $0.bottom.equalToSuperview().inset(210)
+            $0.bottom.equalToSuperview().offset(-150)
             $0.leading.trailing.equalToSuperview().inset(25)
-        }
-        
-        menuTypeSegmentedControl.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(100)
-            $0.centerX.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(50)
-            $0.height.equalTo(60)
-        }
-        
-        menuTableView.snp.makeConstraints {
-            $0.width.height.equalToSuperview()
         }
     }
 }
