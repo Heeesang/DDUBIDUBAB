@@ -8,7 +8,8 @@ final class MenuCollectionViewCell: UICollectionViewCell {
         $0.font = .systemFont(ofSize: 20, weight: .bold)
     }
     
-    private let menuNameTextView = UITextView().then {
+    private let menuNameLabel = UILabel().then {
+        $0.numberOfLines = 0
         $0.tintColor = .clear
         $0.textAlignment = .center
         $0.font = .systemFont(ofSize: 16, weight: .semibold)
@@ -30,7 +31,7 @@ final class MenuCollectionViewCell: UICollectionViewCell {
     }
     
     private func addView() {
-        contentView.addSubViews(menuTypeLabel, menuNameTextView)
+        contentView.addSubViews(menuTypeLabel, menuNameLabel)
     }
     
     private func setLayout() {
@@ -40,9 +41,8 @@ final class MenuCollectionViewCell: UICollectionViewCell {
             $0.centerX.equalToSuperview()
         }
         
-        menuNameTextView.snp.makeConstraints {
+        menuNameLabel.snp.makeConstraints {
             $0.top.equalTo(menuTypeLabel.snp.bottom).offset(20)
-            $0.height.equalToSuperview()
             $0.width.equalToSuperview()
         }
     }
@@ -50,7 +50,7 @@ final class MenuCollectionViewCell: UICollectionViewCell {
     func changeCellNameData(with model: MenuInfo) {
         DispatchQueue.main.async {
             self.menuTypeLabel.text = model.mealName
-            self.menuNameTextView.text = model.dishName
+            self.menuNameLabel.text = model.dishName
         }
     }
 }

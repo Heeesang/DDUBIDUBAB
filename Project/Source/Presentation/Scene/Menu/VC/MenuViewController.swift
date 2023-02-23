@@ -28,7 +28,7 @@ final class MenuViewController: BaseVC<MenuViewModel>, MenuInfoProtocol {
     
     private let verticalFlowLayout = UICollectionViewFlowLayout().then {
         $0.scrollDirection = .horizontal
-        $0.itemSize = CGSize(width: 350, height: 402)
+        $0.itemSize = CGSize(width: 346, height: 402)
     }
     
     private lazy var menuNameCollectionView = UICollectionView(frame: .zero, collectionViewLayout: verticalFlowLayout).then {
