@@ -9,7 +9,7 @@ final class SchoolNameViewController: BaseVC<SchoolNameViewModel>, SchoolInfoPro
     
     var schoolData = PublishSubject<[SchoolInfo]>()
     
-    private let mainLottieAnimationView = LottieAnimationView(name: "dancing-monkey").then {
+    private let mainLottieAnimationView = LottieAnimationView(name: "108666-dancing-monkey").then {
         $0.contentMode = .scaleAspectFit
         $0.loopMode = .loop
         $0.play()

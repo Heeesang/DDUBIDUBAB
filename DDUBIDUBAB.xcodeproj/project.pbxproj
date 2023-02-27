@@ -26,7 +26,6 @@
 		057988A22942E2300006A94E /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057988A12942E2300006A94E /* MenuViewModel.swift */; };
 		057988A62942E24E0006A94E /* SchoolNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057988A52942E24E0006A94E /* SchoolNameViewController.swift */; };
 		057988A82942E2600006A94E /* SchoolNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057988A72942E2600006A94E /* SchoolNameViewModel.swift */; };
-		057988AB294312910006A94E /* dancing-monkey.json in Resources */ = {isa = PBXBuildFile; fileRef = 057988AA294312910006A94E /* dancing-monkey.json */; };
 		057988B0294315200006A94E /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057988AF294315200006A94E /* UIViewExt.swift */; };
 		057988B32943156F0006A94E /* UITextFieldExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057988B22943156F0006A94E /* UITextFieldExt.swift */; };
 		0587951D2948C7D40018C5EC /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0587951C2948C7D40018C5EC /* Moya */; };
@@ -35,10 +34,10 @@
 		05D7CF26299A484D009B21CC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D7CF25299A484D009B21CC /* AppCoordinator.swift */; };
 		05D7CF29299A5AF4009B21CC /* MenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D7CF28299A5AF4009B21CC /* MenuCoordinator.swift */; };
 		05D7CF2C299F5A93009B21CC /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D7CF2B299F5A93009B21CC /* MenuModel.swift */; };
-		05D7CF3229A61D98009B21CC /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D7CF3129A61D98009B21CC /* MenuCell.swift */; };
 		05D7CF3729A61E69009B21CC /* MenuCollectionViewCelll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D7CF3629A61E69009B21CC /* MenuCollectionViewCelll.swift */; };
 		05E269B329680A3C008E11A2 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 05E269B229680A3C008E11A2 /* RxCocoa */; };
 		05E269B629680FDE008E11A2 /* SchoolAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E269B529680FDE008E11A2 /* SchoolAPI.swift */; };
+		B447905429ACCF4000CA0711 /* 108666-dancing-monkey.json in Resources */ = {isa = PBXBuildFile; fileRef = B447905329ACCDEF00CA0711 /* 108666-dancing-monkey.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,16 +59,15 @@
 		057988A12942E2300006A94E /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		057988A52942E24E0006A94E /* SchoolNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolNameViewController.swift; sourceTree = "<group>"; };
 		057988A72942E2600006A94E /* SchoolNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolNameViewModel.swift; sourceTree = "<group>"; };
-		057988AA294312910006A94E /* dancing-monkey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "dancing-monkey.json"; path = "../../../../../Downloads/dancing-monkey.json"; sourceTree = "<group>"; };
 		057988AF294315200006A94E /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		057988B22943156F0006A94E /* UITextFieldExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExt.swift; sourceTree = "<group>"; };
 		0587951F2948D2280018C5EC /* SchoolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolModel.swift; sourceTree = "<group>"; };
 		05D7CF25299A484D009B21CC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		05D7CF28299A5AF4009B21CC /* MenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCoordinator.swift; sourceTree = "<group>"; };
 		05D7CF2B299F5A93009B21CC /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
-		05D7CF3129A61D98009B21CC /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuCell.swift; path = ../../../../../../../../MenuCell.swift; sourceTree = "<group>"; };
 		05D7CF3629A61E69009B21CC /* MenuCollectionViewCelll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCelll.swift; sourceTree = "<group>"; };
 		05E269B529680FDE008E11A2 /* SchoolAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolAPI.swift; sourceTree = "<group>"; };
+		B447905329ACCDEF00CA0711 /* 108666-dancing-monkey.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "108666-dancing-monkey.json"; path = "../../../../../Downloads/108666-dancing-monkey.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,7 +289,7 @@
 		057988A929430E120006A94E /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				057988AA294312910006A94E /* dancing-monkey.json */,
+				B447905329ACCDEF00CA0711 /* 108666-dancing-monkey.json */,
 				057988752942C0E80006A94E /* Info.plist */,
 			);
 			path = Support;
@@ -357,7 +355,6 @@
 		05D7CF2A299F5A81009B21CC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				05D7CF3129A61D98009B21CC /* MenuCell.swift */,
 				05D7CF2B299F5A93009B21CC /* MenuModel.swift */,
 			);
 			path = Models;
@@ -445,7 +442,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				057988AB294312910006A94E /* dancing-monkey.json in Resources */,
+				B447905429ACCF4000CA0711 /* 108666-dancing-monkey.json in Resources */,
 				057988742942C0E80006A94E /* LaunchScreen.storyboard in Resources */,
 				057988712942C0E80006A94E /* Assets.xcassets in Resources */,
 			);
@@ -475,7 +472,6 @@
 				050CA6F5294B7B3A00A886F0 /* BaseTableViewCell.swift in Sources */,
 				0579889A2942DE000006A94E /* BaseViewModel.swift in Sources */,
 				05D7CF26299A484D009B21CC /* AppCoordinator.swift in Sources */,
-				05D7CF3229A61D98009B21CC /* MenuCell.swift in Sources */,
 				057988982942DDDB0006A94E /* BaseVC.swift in Sources */,
 				05D7CF2C299F5A93009B21CC /* MenuModel.swift in Sources */,
 				05D7CF29299A5AF4009B21CC /* MenuCoordinator.swift in Sources */,
