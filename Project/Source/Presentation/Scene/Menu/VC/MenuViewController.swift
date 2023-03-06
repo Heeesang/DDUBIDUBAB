@@ -14,11 +14,13 @@ final class MenuViewController: BaseVC<MenuViewModel>, MenuInfoProtocol {
     private let menuType: [String] = ["조식", "중식", "석식"]
     
     private var dateFormatter = DateFormatter().then {
-        $0.dateFormat = "yyyy년 MM월 dd일"
+        $0.dateFormat = "yyyyMMdd"
     }
     
-    private let titleLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 21, weight: .bold)
+    private lazy var datePicker = UIDatePicker().then {
+        $0.addTarget(self, action: #selector(datePickerDidTab), for: .valueChanged)
+        $0.locale = Locale(identifier: "ko-KR")
+        $0.datePickerMode = .date
     }
     
     private let menuContainerView = UIView().then {
@@ -48,14 +50,17 @@ final class MenuViewController: BaseVC<MenuViewModel>, MenuInfoProtocol {
     }
     
     private func fetchMenuData() {
-        dateFormatter.dateFormat = "yyyyMMdd"
-        let date = dateFormatter.string(from: Date())
+        let date = dateFormatter.string(from: datePicker.date)
         
         guard let atptCode = model?.atptCode else { return }
         guard let schoolCode = model?.schoolCode else { return }
         let mealDate = date
         
         viewModel.fetchMenuInfo(mealDate: mealDate, atptCode: atptCode, schoolCode: schoolCode)
+    }
+    
+    @objc func datePickerDidTab() {
+        fetchMenuData()
     }
 
     private func bindCollectionView() {
@@ -65,7 +70,7 @@ final class MenuViewController: BaseVC<MenuViewModel>, MenuInfoProtocol {
     }
     
     override func addView() {
-        view.addSubViews(titleLabel, menuNameCollectionView)
+        view.addSubViews(menuNameCollectionView, datePicker)
     }
     
     override func configureVC() {
@@ -74,17 +79,16 @@ final class MenuViewController: BaseVC<MenuViewModel>, MenuInfoProtocol {
         
         bindCollectionView()
         fetchMenuData()
-        titleLabel.text = date
     }
     
     override func setLayout() {
-        titleLabel.snp.makeConstraints {
+        datePicker.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
-            $0.centerX.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(40)
         }
         
         menuNameCollectionView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(30)
+            $0.top.equalTo(datePicker.snp.bottom).offset(30)
             $0.bottom.equalToSuperview().offset(-150)
             $0.leading.trailing.equalToSuperview().inset(25)
         }
